@@ -1,4 +1,5 @@
-# Diary Website Side Project
+
+# Diary Website — 個人日記網站 Side Project
 
 # 作品說明
 這是一個日記網站的 Side Project
@@ -21,7 +22,7 @@
 ![DiaryWebsite4](https://i.meee.com.tw/3BM03p9.jpg)
 
 ## 操作功能影片
-[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/6SwG60dgsgs/0.jpg)](https://www.youtube.com/watch?v=6SwG60dgsgs)
+[![IMAGE ALT TEXT HERE](https://meee.com.tw/rwwTAJg)](https://www.youtube.com/watch?v=6SwG60dgsgs)
 
 ## 安裝
 - Node.js 版本建議為: v20.12.0 以上
@@ -48,7 +49,7 @@ npm install
 
 ### 運行專案
 1. 確保您已安裝 Node.js
-2. 在終端機中導航到專案目錄:
+2. 在終端機中導航到專案目錄
 3. 運行以下命令啟動應用程序: node index.js
 4. 應用程序將開始運行。
 
@@ -80,7 +81,7 @@ SESSION_SECRET= #自定義session secret
 - font-awesome v6.5.2
 
 ### 第三方服務
- - Google Cloud
+ - Google Cloud Platform（OAuth 2.0 驗證）
 
 ## 聯絡作者
 您可以透過以下的方式與我聯繫，
