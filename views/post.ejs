@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- 引入共用 header（含 Bootstrap、meta 等） -->
+    <%- include ("partials/header") %>
+    <title>Post</title>
+    <style>
+      body {
+        background-color: #f8f9fa; /* 背景為淡灰色 */
+      }
+      .post-container {
+        background-color: white;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* 卡片陰影 */
+        padding: 2rem;
+        margin-top: 3rem;
+      }
+      .post-image {
+        width: 100%;
+        height: auto;
+        max-width: 400px;
+      }
+      .form-container {
+        padding: 1rem;
+      }
+      textarea {
+        min-height: 120px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 導覽列 -->
+    <%- include ("partials/nav") %>
+
+    <!-- 發布書評主要容器 -->
+    <div class="container post-container">
+      <div class="row">
+        <!-- 左欄：插圖 -->
+        <div
+          class="col-md-6 d-flex align-items-center justify-content-center mb-4"
+        >
+          <img src="/img/post1.svg" class="post-image" alt="post" />
+        </div>
+
+        <!-- 右欄：書評表單 -->
+        <div class="col-md-6 form-container">
+          <h2 class="mb-4">寫一篇新日記</h2>
+
+          <!-- 顯示伺服器訊息（成功/錯誤） -->
+          <%- include ("partials/message") %>
+
+          <!-- 表單開始 -->
+          <form action="/profile/post" method="POST">
+            <!-- 標題 -->
+            <div class="mb-3">
+              <label for="exampleforTitle" class="form-label">標題：</label>
+              <input
+                name="title"
+                type="text"
+                class="form-control"
+                id="exampleforTitle"
+                placeholder="請輸入日記標題。"
+                required
+              />
+            </div>
+
+            <!-- 日期 -->
+            <div class="mb-3">
+              <label for="datePicker" class="form-label">選擇日期：</label>
+              <input
+                type="date"
+                class="form-control"
+                id="datePicker"
+                name="day"
+                required
+              />
+            </div>
+
+            <!-- 心情 -->
+            <div class="mb-3">
+              <label for="moodSelect" class="form-label">今日心情：</label>
+              <select name="mood" id="moodSelect" class="form-select" required>
+                <option value="" disabled selected>請選擇今日心情</option>
+                <option value="😊">😊 開心</option>
+                <option value="😢">😢 難過</option>
+                <option value="😠">😠 生氣</option>
+                <option value="😴">😴 疲倦</option>
+                <option value="😐">😐 普通</option>
+                <option value="🤩">🤩 興奮</option>
+                <option value="😔">😔 沮喪</option>
+                <option value="❤️">❤️ 感恩</option>
+                <option value="🥳">🥳 慶祝</option>
+              </select>
+            </div>
+
+
+            <!-- 天氣 -->
+            <div class="mb-3">
+              <label for="weatherSelect" class="form-label">今日天氣：</label>
+              <select
+                name="weather"
+                id="weatherSelect"
+                class="form-select"
+                required
+              >
+                <option value="" disabled selected>請選擇今日天氣</option>
+                <option value="☀️">☀️ 晴天</option>
+                <option value="🌤️">🌤️ 多雲</option>
+                <option value="⛅">⛅ 陰天</option>
+                <option value="🌧️">🌧️ 雨天</option>
+                <option value="⛈️">⛈️ 雷雨</option>
+                <option value="❄️">❄️ 下雪</option>
+                <option value="🌪️">🌪️ 風大</option>
+                <option value="🌫️">🌫️ 霧濛濛</option>
+                <option value="🌈">🌈 雨後天晴</option>
+              </select>
+            </div>
+
+            <!-- 書評內容 -->
+            <div class="mb-3">
+              <label for="exampleforContent" class="form-label">內容：</label>
+              <textarea
+                class="form-control"
+                id="exampleforContent"
+                name="content"
+                placeholder="請寫下今天的日記"
+                required
+              ></textarea>
+            </div>
+
+            <!-- 提交按鈕 -->
+            <button type="submit" class="btn btn-dark btn-lg w-100">
+              寫下日記
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

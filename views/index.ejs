@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include ("partials/header") %>
+
+    <style>
+      body {
+        background-color: #f8f9fa;
+      }
+      .hero-section {
+        padding: 5rem 0;
+        background-color: #e9ecef;
+      }
+      .hero-content {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .hero-images {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 2rem;
+      }
+      .hero-images img {
+        max-width: 70%;
+        height: auto;
+        margin: 0 1rem;
+      }
+      @media (max-width: 768px) {
+        .hero-images {
+          flex-direction: column;
+          align-items: center;
+        }
+        .hero-images img {
+          max-width: 60%;
+          margin: 1rem 0;
+        }
+      }
+      .btn-start {
+        margin-top: 2rem;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include ("partials/nav") %>
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-content text-center">
+          <div class="hero-images">
+            <!-- <img src="/img/home1.svg" alt="read_1" /> -->
+            <img src="/img/diaryLogo.png" alt="read_3" />
+          </div>
+          <!-- <h1 class="display-4 fw-bold mb-4">Dear Diary</h1> -->
+          <div class="card border-secondary">
+            <div class="card-body ">
+              <div class="lead mb-4">
+                這是一個專屬於自己的日記空間，<br/>自在地記錄每天的生活點滴、心情片段與成長歷程。<br/>
+                簡潔介面、便捷操作，寫下每一天的真實感受。
+              </div>
+              <hr />
+              <p class="lead"><B>本專案為個人開發的 Side Project，使用：</B></p>EJS、MongoDB、Passport.js、OAuth（Google
+              一鍵登入）等技術實作。
+            </div>
+          </div>
+          <% if(!user) {%>
+          <a href="/auth/login" class="btn custom-color btn-lg btn-start">
+            <i class="fas fa-book-open me-2"></i>開始寫下今天的日記吧!
+          </a>
+          <%} %> <% if(user) {%>
+          <a href="/profile" class="btn custom-color btn-lg btn-start">
+            <i class="fas fa-book-open me-2"></i>開始寫下今天的日記吧!
+          </a>
+          <%} %>
+        </div>
+      </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

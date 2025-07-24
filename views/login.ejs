@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- 引入共用 header（包含 meta, CSS, Bootstrap 等） -->
+    <%- include ("partials/header") %>
+    <title>Login</title>
+    <style>
+      body {
+        background-color: #f8f9fa; /* 背景淡灰色 */
+      }
+      .login-container {
+        margin-top: 3rem;
+        max-width: 1200px;
+        width: 100%;
+        /* max-height: 90vh; */
+        padding: 2rem;
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        box-sizing: border-box;
+      }
+
+      @media (max-width: 768px) {
+        .login-container {
+          padding: 1rem; /* 減少內邊距 */
+          max-width: 95%; /* 讓容器在手機上接近全寬 */
+        }
+      }
+
+      .login-image {
+        max-width: 100%;
+        height: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 引入nav bar導覽列（共用元件） -->
+    <%- include ("partials/nav") %>
+
+    <main class="p-3">
+      <!-- 登入容器 -->
+      <div class="container login-container">
+        <div class="row">
+          <!-- 左欄：插圖 -->
+          <div
+            class="col-md-6 d-flex align-items-center justify-content-center"
+          >
+            <img src="/img/login1.svg" class="login-image" alt="login" />
+          </div>
+
+          <!-- 右欄：登入表單 -->
+          <div class="col-md-6">
+            <h2 class="mb-4 text-center fw-bold display-5">登入</h2>
+
+            <!-- 透過google 登入的圖片，href="/auth/google" =>會另外處理這個route -->
+            <a class="btn btn-dark btn-lg btn-block mb-3" href="/auth/google">
+              <i class="fa-brands fa-google" style="color: #efc38b"></i>
+              透過 Google 登入
+            </a>
+
+            <hr />
+
+            <!-- 傳統帳密登入 -->
+            <h5 class="mb-3">已經有帳戶了嗎？您可以在這裡登入：</h5>
+            <form action="/auth/login" method="POST">
+              <!-- Email 欄 -->
+              <div class="form-group mb-3">
+                <label for="exampleInputEmail1">信箱地址：</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  id="exampleInputEmail1"
+                  aria-describedby="emailHelp"
+                  name="username"
+                  required
+                />
+                <small id="emailHelp" class="form-text text-muted">
+                  我們不會與其他人分享你的信箱。
+                </small>
+              </div>
+
+              <!-- 密碼欄 -->
+              <div class="form-group mb-3">
+                <label for="exampleInputPassword1">密碼：</label>
+                <input
+                  type="password"
+                  class="form-control"
+                  id="exampleInputPassword1"
+                  name="password"
+                  required
+                />
+              </div>
+
+              <!-- 登入按鈕 -->
+              <button class="btn btn-dark btn-lg w-100">會員登入</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,120 @@
+<!-- views > partials > nav.ejs -->
+
+<nav class="navbar navbar-dark bg-dark navbar-expand-lg fixed-top">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="/">
+      <img
+        src="/img/diaryLogoHorizon.png"
+        alt="Logo"
+        class="img-fluid"
+        style="width: 200px; height: auto"
+      />
+    </a>
+    <button
+      class="navbar-toggler "
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarText"
+      aria-controls="navbarText"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <!-- <li class="nav-item">
+          <a class="nav-link" href="/"
+            ><i
+              class="fa-solid fa-house-chimney-user"
+              style="color: #efc38b"
+            ></i
+            ><span class="ms-2">Home</span></a
+          >
+        </li> -->
+        <!-- ++ 如果沒有註冊的話，就要讓 會員登入 及 註冊會員出現-->
+        <% if (!user) { %>
+        <li class="nav-item">
+          <a class="nav-link" href="/auth/login"
+            ><i class="fa-solid fa-right-to-bracket" style="color: #efc38b"></i
+            ><span class="ms-2">會員登入</span></a
+          >
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/auth/signup"
+            ><i class="fa-solid fa-pen" style="color: #efc38b"></i
+            ><span class="ms-2">註冊會員</span></a
+          >
+        </li>
+        <!-- 如果是user 的話就顯示這部分 -->
+        <% } %> <% if (user) { %>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/profile"
+            ><i class="fas fa-book-open" style="color: #efc38b"></i
+            ><span class="ms-2">我的日記</span></a
+          >
+        </li>
+
+        <li class="nav-item">
+          <a class="nav-link" href="/profile/post"
+            ><i class="fa-regular fa-paste" style="color: #efc38b"></i
+            ><span class="ms-2">寫新日記</span></a
+          >
+        </li>
+        <li class="nav-item"></li>
+        <li class="nav-item">
+          <a
+            class="nav-link"
+            href="#"
+            data-bs-toggle="modal"
+            data-bs-target="#logoutModal"
+          >
+            <i
+              class="fa-solid fa-right-from-bracket"
+              style="color: #efc38b"
+            ></i>
+            <span class="ms-2">登出</span>
+          </a>
+        </li>
+        <% } %>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Logout Modal -->
+<div
+  class="modal fade"
+  id="logoutModal"
+  tabindex="-1"
+  aria-labelledby="logoutModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="logoutModalLabel">確認登出</h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">你確定要登出嗎？</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          取消
+        </button>
+        <a
+          href="/auth/logout"
+          class="btn"
+          style="background-color: #efc38b"
+          >確定登出</a
+        >
+      </div>
+    </div>
+  </div>
+</div>

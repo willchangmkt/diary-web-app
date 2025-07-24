@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include ("partials/header") %>
+    <title>Delete Check</title>
+    <style>
+      body {
+        background-color: #f8f9fa;
+        font-family: Arial, sans-serif;
+      }
+      .profile-container {
+        margin-top: 3rem;
+        background-color: white;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+      }
+      .delete-image {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 2rem;
+      }
+      h2 {
+        margin-bottom: 2rem;
+        color: #333;
+      }
+      .card {
+        border: none;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s;
+      }
+      .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+      }
+      .card-body {
+        padding: 1.5rem;
+      }
+      .card-title {
+        font-size: 1.2rem;
+        font-weight: bold;
+        margin-bottom: 1rem;
+      }
+      .card-text {
+        margin-bottom: 0.75rem;
+      }
+      .btn-container {
+        margin-top: 1.5rem;
+      }
+      .btn-outline-danger {
+        border-width: 2px;
+        font-weight: bold;
+      }
+      .btn-outline-danger:hover {
+        background-color: #dc3545;
+        color: white;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include ("partials/nav") %>
+    <div class="container profile-container">
+      <div class="row">
+        <div class="col-md-6 mb-4 d-flex align-items-center justify-content-center">
+          <img src="/img/delete1.svg" class="delete-image" alt="delete" />
+        </div>
+        <div class="col-md-6">
+          <h3 class="pb-4">
+            確定要刪除此篇日記嗎？
+          </h3>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title">標題： <%= deletePost.title %></h5>
+              <p class="card-text">
+                <strong>心情：</strong> <%= deletePost.day %>
+              </p>
+              <p class="card-text">
+                <strong>心情：</strong> <%= deletePost.mood %>
+              </p>
+              <p class="card-text">
+                <strong>天氣：</strong> <%= deletePost.weather %>
+              </p>
+              <p class="card-text">
+                <strong>內容：</strong> <%= deletePost.content %>
+              </p>
+              <div class="btn-container">
+                <a href="/profile/" class="btn btn-outline-secondary w-100"
+                  >回到個人頁面</a
+                >
+
+                <form
+                  action="/profile/<%= deletePost._id %>/delete?_method=DELETE"
+                  method="post"
+                  style="flex: 1"
+                >
+                  <button
+                    type="submit"
+                    class="btn mt-3 btn-dark w-100"
+                  >
+                    刪除日記
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

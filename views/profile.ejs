@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- 引入共用 header -->
+    <%- include ("partials/header") %>
+    <title>Profile</title>
+    <style>
+      /* 背景色與主要容器樣式 */
+      body {
+        background-color: #f8f9fa;
+      }
+      .profile-container {
+        margin-top: 2rem;
+        background-color: white;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+      }
+
+      /* 個人圖片設定 */
+      .profile-image {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+      }
+
+      /* 個人資訊樣式 */
+      .user-info {
+        padding: 1rem;
+      }
+      .user-avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        margin-right: 1rem;
+      }
+      .user-name {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
+      .user-details {
+        list-style-type: none;
+        padding-left: 0;
+        margin-top: 1rem;
+      }
+      .user-details li {
+        margin-bottom: 0.75rem;
+      }
+      .user-details strong {
+        margin-right: 0.5rem;
+      }
+
+      /* 書評卡片設定與響應式排版 */
+      .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        justify-content: flex-start;
+      }
+      .card {
+        width: calc(33.333% - 1rem);
+        margin: 0;
+        flex-grow: 0;
+      }
+      @media (max-width: 992px) {
+        .card {
+          width: calc(50% - 1rem);
+        }
+      }
+      @media (max-width: 768px) {
+        .card {
+          width: 100%;
+        }
+      }
+
+      .card-body {
+        padding: 1rem;
+      }
+      .card-title,
+      .card-text {
+        margin-bottom: 0.5rem;
+      }
+
+      /* 按鈕排列 */
+      .btn-container {
+        display: flex;
+        gap: 0.5rem;
+        margin-top: auto;
+      }
+      .btn-container .btn,
+      .btn-container form {
+        flex: 1;
+      }
+    </style>
+  </head>
+
+  <body>
+    <!-- 導覽列 -->
+    <%- include ("partials/nav") %>
+
+    <!-- 主內容容器 -->
+    <!-- .container 提供整體寬度與左右邊距 -->
+    <div class="container profile-container">
+      <div class="row">
+        <!-- 左側插圖 -->
+        <div class="col-md-6 mb-4 d-flex align-items-center justify-content-center">
+          <img src="/img/book1.svg" class="profile-image" alt="profile" />
+        </div>
+
+        <!-- 右側使用者資訊 -->
+        <div class="col-md-6">
+          <section class="user-info">
+            <div class="d-flex align-items-center mb-3">
+              <img
+                src="<%= user.thumbnail %>"
+                alt="個人圖片"
+                class="user-avatar"
+              />
+              <h1 class="user-name mb-0"><%= user.name %>的日記簿</h1>
+            </div>
+            <ul class="user-details">
+              <li><strong>Google ID：</strong><%= user.googleID %></li>
+              <li><strong>註冊時間：</strong><%= user.date %></li>
+              <li><strong>Email：</strong><%= user.email %></li>
+            </ul>
+          </section>
+        </div>
+      </div>
+
+      <!-- 書評列表 -->
+      <!-- .row 建立一行，重置欄位的間距與定位 -->
+      <div class="row mt-4">
+        <!-- .col-* 放在 row 裡面，設定這一行中每個欄位要佔幾格（總共 12 格） -->
+        <div class="col-12">
+          <h2 class="mb-3">
+            <i class="fa-solid fa-bookmark" style="color: #efc38b"></i>
+            我的日記:
+          </h2>
+          <!-- 製作另外一個section 用於post -->
+          <!-- 使用Bootstrap 的格線系統 -->
+          <!-- 從/profile 拿到的route 會是陣列，依序套入for 迴圈裏面 -->
+          <div class="card-container">
+            <% for (let i = 0; i < posts.length; i++) { %>
+            <div class="card">
+              <div class="card-body">
+                <!-- 設定title 是 第i項的title -->
+                <h5 class="card-title">
+                  <strong>標題: </strong><%= posts[i].title %>
+                </h5>
+                <p class="card-text">
+                  <strong>日期: </strong><%= posts[i].day %>
+                </p>
+                <!-- 設定text 是 post 第i項的bookAuthor -->
+                <p class="card-text">
+                  <strong>心情: </strong><%= posts[i].mood %>
+                </p>
+                <p class="card-text">
+                  <strong>天氣: </strong><%= posts[i].weather %>
+                </p>
+                <p class="card-text">
+                  <strong>日記: </strong><%= posts[i].content %>
+                </p>
+
+                <p class="card-text">
+                  <strong>發佈日期:</strong> <%= posts[i].formattedDate %>
+                </p>
+                <div class="btn-container">
+                  <a
+                    href="/profile/<%= posts[i]._id %>/update"
+                    class="btn btn-secondary"
+                    >修改日記</a
+                  >
+                  <a
+                    href="/profile/<%= posts[i]._id %>/deleteCheck"
+                    class="btn btn-outline-dark"
+                    >刪除日記</a
+                  >
+                </div>
+              </div>
+            </div>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

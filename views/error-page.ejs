@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include ("partials/header") %>
+    <title>Error 404</title>
+    <style>
+      body {
+        background-color: #f8f9fa;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+      }
+      .delete-container {
+        flex-grow: 1;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 2rem;
+      }
+      .delete-content {
+        background-color: white;
+        border-radius: 10px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        max-width: 800px;
+        width: 100%;
+      }
+      .delete-image {
+        max-width: 100%;
+        height: auto;
+        margin-bottom: 1.5rem;
+      }
+      h2 {
+        margin-bottom: 1.5rem;
+        text-align: center;
+      }
+    </style>
+  </head>
+  <body>
+    <%- include ("partials/nav") %>
+    <div class="delete-container">
+      <div class="delete-content">
+        <div class="row">
+          <div class="col-md-6 mb-4 mb-md-0">
+            <img src="/img/error1.svg" class="error-image" alt="error" />
+          </div>
+          <div class="col-md-6 d-flex flex-column justify-content-center">
+            <h2>OOps！</h2>
+            <br />
+            <h2>發生了一些錯誤。</h2>
+            <a class="btn btn-secondary btn-lg" href="/profile">回到個人頁面</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

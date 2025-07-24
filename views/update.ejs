@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include ("partials/header") %>
+    <title>Update</title>
+    <style>
+      body {
+        background-color: #f8f9fa;
+      }
+      .post-container {
+        background-color: white;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        margin-top: 3rem;
+      }
+      .post-image {
+        width: 100%;
+        height: auto;
+        max-width: 400px;
+      }
+      .form-container {
+        padding: 1rem;
+      }
+      textarea {
+        min-height: 120px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 導覽列 -->
+    <%- include ("partials/nav") %>
+
+    <!-- 外層容器 -->
+    <div class="container post-container">
+      <div class="row">
+        <!-- 左圖 -->
+        <div class="col-md-6 d-flex align-items-center justify-content-center mb-4">
+          <img src="/img/post1.svg" class="post-image" alt="post" />
+        </div>
+
+        <!-- 右表單 -->
+        <div class="col-md-6 form-container">
+          <h2 class="mb-4">調整日記</h2>
+
+          <!-- 錯誤訊息 -->
+          <%- include ("partials/message") %>
+
+          <!-- PATCH 表單送出 -->
+          <form action="/profile/<%= foundPost._id %>?_method=PATCH" method="POST">
+            <input type="hidden" name="_method" value="PATCH" />
+
+            <!-- 標題 -->
+            <div class="mb-3">
+              <label class="form-label">標題：</label>
+              <input name="title" type="text" class="form-control" required value="<%= foundPost.title %>" />
+            </div>
+
+            <!-- 日期 -->
+            <div class="mb-3">
+              <label for="datePicker" class="form-label">選擇日期：</label>
+              <input
+                type="date"
+                class="form-control"
+                id="datePicker"
+                name="day"
+                required
+              />
+            </div>
+            
+            <div class="mb-3">
+             <label class="form-label">心情：</label>
+               <select name="mood" class="form-select" >
+    <option value="">請選擇心情</option>
+    <option value="😊" <%= foundPost.mood === "😊" ? "selected" : "" %>>😊 開心</option>
+    <option value="😢" <%= foundPost.mood === "😢" ? "selected" : "" %>>😢 難過</option>
+    <option value="😠" <%= foundPost.mood === "😠" ? "selected" : "" %>>😠 生氣</option>
+    <option value="😴" <%= foundPost.mood === "😴" ? "selected" : "" %>>😴 疲倦</option>
+    <option value="😐" <%= foundPost.mood === "😐" ? "selected" : "" %>>😐 普通</option>
+    <option value="🤩" <%= foundPost.mood === "🤩" ? "selected" : "" %>>🤩 興奮</option>
+    <option value="😔" <%= foundPost.mood === "😔" ? "selected" : "" %>>😔 沮喪</option>
+    <option value="❤️" <%= foundPost.mood === "❤️" ? "selected" : "" %>>❤️ 感恩</option>
+    <option value="🥳" <%= foundPost.mood === "🥳" ? "selected" : "" %>>🥳 慶祝</option>
+  </select>
+</div>
+
+
+
+
+            
+<div class="mb-3">
+  <label class="form-label">天氣：</label>
+  <select name="weather" class="form-select" >
+    <option value="">請選擇天氣</option>
+    <option value="☀️" <%= foundPost.weather === "☀️" ? "selected" : "" %>>☀️ 晴天</option>
+    <option value="🌤️" <%= foundPost.weather === "🌤️" ? "selected" : "" %>>🌤️ 多雲</option>
+    <option value="⛅" <%= foundPost.weather === "⛅" ? "selected" : "" %>>⛅ 陰天</option>
+    <option value="🌧️" <%= foundPost.weather === "🌧️" ? "selected" : "" %>>🌧️ 雨天</option>
+    <option value="⛈️" <%= foundPost.weather === "⛈️" ? "selected" : "" %>>⛈️ 雷雨</option>
+    <option value="❄️" <%= foundPost.weather === "❄️" ? "selected" : "" %>>❄️ 下雪</option>
+    <option value="🌪️" <%= foundPost.weather === "🌪️" ? "selected" : "" %>>🌪️ 風大</option>
+    <option value="🌫️" <%= foundPost.weather === "🌫️" ? "selected" : "" %>>🌫️ 霧濛濛</option>
+    <option value="🌈" <%= foundPost.weather === "🌈" ? "selected" : "" %>>🌈 雨後天晴</option>
+  </select>
+</div>
+
+
+            <div class="mb-3">
+              <label class="form-label">內容：</label>
+              <textarea class="form-control" name="content"><%= foundPost.content %></textarea>
+            </div>
+
+            <!-- 提交 -->
+            <button type="submit" class="btn btn-dark btn-lg w-100">修改完成</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

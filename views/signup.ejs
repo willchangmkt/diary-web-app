@@ -1,0 +1,117 @@
+<!-- views > signup.ejs -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <%- include ("partials/header") %>
+    <title>Signup</title>
+    <style>
+      /* 背景與註冊區塊樣式 */
+      body {
+        background-color: #f8f9fa;
+      }
+      .signup-container {
+        background-color: white;
+        border-radius: 15px;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        padding: 2rem;
+        margin-top: 3rem;
+      }
+      .signup-image {
+        width: 100%;
+        height: auto;
+        max-width: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 導覽列 -->
+    <%- include ("partials/nav") %>
+    <main style="padding: 3rem">
+      <div class="container">
+        <div class="row justify-content-center">
+          <div class="col-md-10">
+            <div class="signup-container">
+              <div class="row">
+                <!-- 左側圖片 -->
+                <div
+                  class="col-md-6 d-flex align-items-center justify-content-center"
+                >
+                  <img
+                    src="/img/signup1.svg"
+                    class="signup-image"
+                    alt="signup"
+                  />
+                </div>
+
+                <!-- 右側註冊表單 -->
+                <div class="col-md-6">
+                  <h2 class="mb-4 text-center fw-bold display-5">註冊新帳戶</h2>
+                  <!-- 引入錯誤訊息 (密碼太短)-->
+                  <%- include ("partials/message") %>
+                  <form action="/auth/signup" method="POST">
+                    <!-- 姓名欄位 -->
+                    <div class="mb-3">
+                      <label for="exampleUsername" class="form-label"
+                        >姓名：</label
+                      >
+                      <input
+                        name="name"
+                        type="text"
+                        class="form-control"
+                        id="exampleUsername"
+                        required
+                        minlength="3"
+                        maxlength="255"
+                        placeholder="請輸入您的全名"
+                      />
+                    </div>
+
+                    <!-- 信箱欄位 -->
+                    <div class="mb-3">
+                      <label for="exampleInputEmail1" class="form-label"
+                        >信箱地址：</label
+                      >
+                      <input
+                        type="email"
+                        class="form-control"
+                        id="exampleInputEmail1"
+                        name="email"
+                        required
+                        placeholder="請輸入您的電子郵件"
+                      />
+                    </div>
+
+                    <!-- 密碼欄位 -->
+                    <div class="mb-3">
+                      <label for="exampleInputPassword1" class="form-label"
+                        >密碼：</label
+                      >
+                      <input
+                        type="password"
+                        class="form-control"
+                        id="exampleInputPassword1"
+                        name="password"
+                        maxlength="1024"
+                        required
+                        placeholder="請輸入密碼"
+                      />
+                    </div>
+
+                    <!-- 提交按鈕 -->
+                    <button
+                      type="submit"
+                      class="btn btn-dark btn-lg w-100"
+                    >
+                      註冊用戶
+                    </button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </body>
+</html>
