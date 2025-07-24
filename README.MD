@@ -22,7 +22,7 @@
 ![DiaryWebsite4](https://i.meee.com.tw/3BM03p9.jpg)
 
 ## 操作功能影片
-[![IMAGE ALT TEXT HERE](https://meee.com.tw/rwwTAJg)](https://www.youtube.com/watch?v=6SwG60dgsgs)
+[![IMAGE ALT TEXT HERE](https://img.youtube.com/vi/6SwG60dgsgs/maxresdefault.jpg)](https://www.youtube.com/watch?v=6SwG60dgsgs)
 
 ## 安裝
 - Node.js 版本建議為: v20.12.0 以上
